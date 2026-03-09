@@ -1,5 +1,6 @@
 #pragma once
 #include "IScene.h"
+#include "IrisTransition.h"
 #include <memory>
 
 /// <summary>
@@ -24,4 +25,13 @@ private:
 	std::unique_ptr<IScene> CreateScene(IScene::SceneId id);
 
 	std::unique_ptr<IScene> currentScene_;
+
+	/// アイリス遷移エフェクト
+	IrisTransition iris_;
+
+	/// 遷移先のシーンID（遷移中に保持）
+	IScene::SceneId pendingSceneId_ = IScene::SceneId::None;
+
+	/// 遷移中フラグ
+	bool isTransitioning_ = false;
 };
