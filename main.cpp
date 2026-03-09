@@ -1,34 +1,30 @@
 #include <Windows.h>
-#include"KamataEngine.h"
-
-#include"GameScene.h"
+#include "KamataEngine.h"
+#include "SceneManager.h"
 
 using namespace KamataEngine;
 
-
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
-	
-	//エンジンの初期化
+
+	// エンジンの初期化
 	KamataEngine::Initialize();
 
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
-	GameScene* gameScene = new GameScene();
-	gameScene->Initialize();
+	SceneManager sceneManager;
+	sceneManager.Initialize(IScene::SceneId::Title);
 
-	while (true)
-	{
-		if (KamataEngine::Update())
-		{
+	while (true) {
+		if (KamataEngine::Update()) {
 			break;
 		}
 
-		gameScene->Update();
+		sceneManager.Update();
 
 		dxCommon->PreDraw();
 
-		gameScene->Draw();
+		sceneManager.Draw();
 
 		dxCommon->PostDraw();
 	}

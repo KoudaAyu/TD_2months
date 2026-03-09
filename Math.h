@@ -1,0 +1,10 @@
+#pragma once
+#include "KamataEngine.h"
+using namespace KamataEngine;
+
+class Math {
+	Matrix4x4 Identity4x4();
+	Matrix4x4 Multiply(const Matrix4x4& m1, const Matrix4x4& m2);
+	Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotate, const Vector3& translate);
+};
+

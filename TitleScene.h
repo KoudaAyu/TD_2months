@@ -2,12 +2,12 @@
 #include "IScene.h"
 
 /// <summary>
-/// ゲーム本編シーン
+/// タイトルシーン
 /// </summary>
-class GameScene : public IScene {
+class TitleScene : public IScene {
 public:
-	GameScene();
-	~GameScene() override;
+	TitleScene();
+	~TitleScene() override;
 
 	void Initialize() override;
 	void Update() override;
