@@ -1,16 +1,23 @@
 #include "EnemyBase.h"
 
+using namespace KamataEngine;
+
 EnemyBase::EnemyBase()
 	: position_{0.0f, 0.0f, 0.0f}
 	, velocity_{0.0f, 0.0f, 0.0f}
 	, hp_(1)
 	, active_(true)
+	, camera_(nullptr)
 {
 }
 
 EnemyBase::~EnemyBase() = default;
 
-void EnemyBase::Initialize() {
+void EnemyBase::Initialize(const Camera* camera) {
+	camera_ = const_cast<Camera*>(camera);
+
+	worldTransform_.Initialize();
+
 	position_ = {0.0f, 0.0f, 0.0f};
 	velocity_ = {0.0f, 0.0f, 0.0f};
 	hp_ = 1;

@@ -1,14 +1,16 @@
 #pragma once
+#include"KamataEngine.h"
 
-#include "Transform.h"
+
+using namespace KamataEngine;
 
 class EnemyBase {
 public:
 	EnemyBase();
 	virtual ~EnemyBase();
 
-	// Lifecycle
-	virtual void Initialize();
+	// Initialize with camera from GameScene
+	virtual void Initialize(const Camera* camera);
 	virtual void Update();
 	virtual void Draw();
 
@@ -22,9 +24,12 @@ public:
 	bool IsActive() const;
 	void Kill();
 
-private:
+protected:
 	Vector3 position_;
 	Vector3 velocity_;
 	int hp_;
 	bool active_;
+
+	Camera* camera_;
+	WorldTransform worldTransform_;
 };
